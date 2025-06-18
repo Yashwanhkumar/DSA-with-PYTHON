@@ -6,6 +6,7 @@ def mergesort(arr,low,high):
     mergesort(arr,mid+1,high)
     merge(arr,low,mid,high)
 def merge(arr,low,mid,high):
+    cnt=0
     temp=[]
     left=low
     right=mid+1
@@ -15,6 +16,7 @@ def merge(arr,low,mid,high):
             left+=1
         else:
             temp.append(arr[right])
+            cnt+=(mid-left+1)
             right+=1
     while left<=mid:
             temp.append(arr[left])
@@ -24,7 +26,8 @@ def merge(arr,low,mid,high):
             right+=1
     for i in range(len(temp)):
         arr[low+i]=temp[i]
-
+    return cnt
+# Example usage
 arr=[12,44,3,42,889,9]
 n=len(arr)
 mergesort(arr,0,n-1)
